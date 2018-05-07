@@ -79,13 +79,13 @@ public class KProgressHUD {
         return new KProgressHUD(context);
     }
 
-  /**
-   * Create a new HUD. specify the HUD style (if you use a custom view, you need {@code KProgressHUD.create(Context context)}).
-   *
-   * @param context Activity context that the HUD bound to
-   * @param style One of the KProgressHUD.Style values
-   * @return An unique HUD instance
-   */
+    /**
+     * Create a new HUD. specify the HUD style (if you use a custom view, you need {@code KProgressHUD.create(Context context)}).
+     *
+     * @param context Activity context that the HUD bound to
+     * @param style One of the KProgressHUD.Style values
+     * @return An unique HUD instance
+     */
     public static KProgressHUD create(Context context, Style style) {
         return new KProgressHUD(context).setStyle(style);
     }
@@ -262,6 +262,11 @@ public class KProgressHUD {
         return this;
     }
 
+    public KProgressHUD setCancellableOnTouchSide(boolean isCancellable) {
+        mProgressDialog.setCanceledOnTouchOutside(isCancellable);
+        return this;
+    }
+
     /**
      * Specify a callback to run when using the back button (default is null)
      *
@@ -340,7 +345,7 @@ public class KProgressHUD {
         private Determinate mDeterminateView;
         private Indeterminate mIndeterminateView;
         private View mView;
-		private TextView mLabelText;
+        private TextView mLabelText;
         private TextView mDetailsText;
         private String mLabel;
         private String mDetailsLabel;
@@ -349,7 +354,7 @@ public class KProgressHUD {
         private int mWidth, mHeight;
         private int mLabelColor = Color.WHITE;
         private int mDetailColor = Color.WHITE;
-		
+
         public ProgressDialog(Context context) {
             super(context);
         }
@@ -368,7 +373,8 @@ public class KProgressHUD {
             layoutParams.gravity = Gravity.CENTER;
             window.setAttributes(layoutParams);
 
-            setCanceledOnTouchOutside(false);
+
+            //setCanceledOnTouchOutside(false);
 
             initViews();
         }
